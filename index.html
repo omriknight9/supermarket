@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supermarket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2, minimum-scale=1, user-scalable=yes">
+    <meta name="description" content="Supermarket">
+
+    <meta property="og:site_name" content="Supermarket">
+    <meta property="og:title" content="Supermarket" />
+    <meta property="og:description" content="Add, edit and delete products" />
+    <meta property="og:image" itemprop="image" content="https://omriknight9.github.io/ngSoftShop/images/shoppingCart.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://omriknight9.github.io/ngSoftShop/">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="icon" href="images/shoppingCart.png">
+    <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="headerContainer">
+            <div class="header">
+                <h1>Omri's Supermarket</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div id="productList">
+            <div id="topWrapper">
+                <button id="addProductBtn" onclick="addProduct()">Add</button>
+
+                <div id="searchWrapper">
+                    <input id="searchProduct" placeholder="Search a product" maxlength="25" aria-label="Search" name="asd" autocomplete="off"> 
+                    <span class="focusBorder"></span>
+                </div>
+
+                <div id="sortWrapper">
+                    <span>Sort by:</span>
+                    <select name="selectFilter" id="selectFilter">
+                        <option selected="selected" value="Choose">Choose</option>
+                        <option value="name">Name</option>
+                        <option value="price">Price</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="productDetails"></div>
+    </main>
+
+    <!----------------POPUPS---------------->
+
+    <div id="deleteProductPop" class="popUpInfo">
+        <div class="popupCont">
+            <p>Delete <span id="ProductNameToDelete"></span>?</p>        
+            <div class="popupBtnsWrapper">
+                <button class="popupBtn" onclick="deleteProduct()">Yes</button>
+                <button class="popupBtn" onclick="closeCurrentPopup($(this))">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="saveProductPop" class="popUpInfo">
+        <div class="popupCont">
+            <p>Thanks for updating <span id="productNameToSave"></span></p>
+            <div class="popupBtnsWrapper">
+                <button class="popupBtn" onclick="closeCurrentPopup($(this))">Close</button>              
+            </div>
+        </div>
+    </div>
+</body>
+</html>
