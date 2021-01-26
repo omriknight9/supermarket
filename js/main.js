@@ -7,19 +7,12 @@ $(document).ready(function (event) {
 
     loadJson('./lists/items.txt');
 
-    window.onscroll = function () {
-        scrollBtn();
-    }
-
     $('#searchProduct').on('input', function () {
 
         tempArr = [];
-
         searchVal = $('#searchProduct').val();
         lastChar = searchVal.substr(searchVal.length - 1);
-
         let products = items[0];
-
         $('.productWrapper').remove();
 
         for (let i = 0; i < products.length; i++) {
@@ -112,10 +105,9 @@ function buildItems(products) {
                     if (currentPage < pages) {
                         $('#nextPageBtn').css({'opacity': '1', 'pointer-events': 'all'});
                     }
+
                     $('#pageNum').html('Page ' + currentPage + ' of ' + pages);
-    
                     let lastChild = $('.productWrapper:last-child').attr('itemnum');
-    
                     let startNum;
     
                     if (lastChild % 4 == 0) {
@@ -148,7 +140,6 @@ function buildItems(products) {
             id: 'nextPageBtn',
             text: 'Next',
             click: function() {
-    
                 if (currentPage == pages - 1) {
                     $(this).css({'opacity': '.2', 'pointer-events': 'none'});
                 } else {
@@ -255,7 +246,6 @@ function deleteProduct() {
             $('#productListContent, #prevNextWrapper').remove();
             counter = 0;
             buildItems(items[0]);
-
             $('#deleteProductPop').hide();
             $('#deleteProductPop').attr('productId', '');
             $('#ProductNameToDelete').html('');
@@ -392,7 +382,6 @@ function checkProductChange() {
         valid = false;
 
         $('#selectedProductNameInput').click(function(){
-
             $('#selectedProductNameInput').css({
                 'border': 'unset',
                 'border-bottom': '1px solid black'
@@ -406,8 +395,7 @@ function checkProductChange() {
         });
         valid = false;
 
-        $('#selectedProductDescriptionInput').click(function(){
-
+        $('#selectedProductDescriptionInput').click(function() {
             $('#selectedProductDescriptionInput').css({
                 'border': 'unset',
                 'border-bottom': '1px solid black'
@@ -422,7 +410,6 @@ function checkProductChange() {
         valid = false;
 
         $('#selectedProductPriceInput').click(function(){
-
             $('#selectedProductPriceInput').css({
                 'border': 'unset',
                 'border-bottom': '1px solid black'
@@ -443,7 +430,6 @@ function checkProductChange() {
 
                 $.each($('.productWrapper'), function (key, value) {
                     if (products[i].id == $(value).attr('productId')) {
-
                         $(value).attr('productname', nameVal);
                         $(value).attr('productdesc', decsVal);
                         $(value).attr('productprice', Number(priceVal).toFixed(2));
@@ -474,9 +460,7 @@ function checkProductChange() {
         $('#productDetails').empty();
         $('#productList').removeClass('minimizeList');
         $('.productWrapper').removeClass('selectedDiv');
-
         $('#productDetails').attr('selectedProductId', '');
-
         $('#productNameToSave').html(nameVal);
         $('#saveProductPop').show();
 
@@ -502,15 +486,6 @@ function checkProductChange() {
             counter = 0;
             buildItems(items[0]);
         }
-    }
-}
-
-function scrollBtn() {
-    if ($(this).scrollTop() > 550) {
-        $('.goToTopBtn').fadeIn();
-    }
-    else {
-        $('.goToTopBtn').fadeOut();
     }
 }
 
